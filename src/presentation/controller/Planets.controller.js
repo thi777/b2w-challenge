@@ -20,9 +20,17 @@ class PlanetController {
     return res.status(200).json(results);
   }
 
-  async getById(req, res) {
-    const { id } = req.params;
+  async getById({ params }, res) {
+    const { id } = params;
     const results = await PlanetsService.getById({ payload: id });
+
+    return res.status(200).json(results);
+  }
+
+  async getByName({ query }, res) {
+    const { name } = query;
+
+    const results = await PlanetsService.getByName({ payload: name });
 
     return res.status(200).json(results);
   }

@@ -15,29 +15,29 @@ describe("GET /api/v1/planets/id", () => {
   beforeAll(async () => {
     endpoint = "/planets";
     let planet = new PlanetSchema({
-      name: "Bespin",
-      climate: "Gelado",
+      name: "Dagobah",
+      climate: "Geladdo",
       terrain: "Nevasca",
     });
     await planet.save();
   });
 
-  it("should return 200 when get one planet", async () => {
+  it("should return 200 when search the planet by name", async () => {
     let {
-      body: { _id },
+      body: { name, _id },
       status,
     } = await request(app).post(endpoint).send({
-      name: "Bespin",
+      name: "Dagobah",
       climate: "Gelado",
       terrain: "Nevasca",
     });
     expect(status).toBe(201);
 
-    const results = await request(app).get(`${endpoint}/${_id}`);
+    const results = await request(app).get(`${endpoint}?name=${name}`);
     expect(results.status).toBe(200);
-    expect(results.body).toMatchObject({
+    expect(results.body[results.body.length - 1]).toMatchObject({
       _id: `${_id}`,
-      name: "Bespin",
+      name: "Dagobah",
       climate: "Gelado",
       terrain: "Nevasca",
     });

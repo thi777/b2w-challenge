@@ -13,6 +13,10 @@ class PlanetService {
   async getById({ payload: id }) {
     return await Planet.findById({ _id: mongoose.Types.ObjectId(id) });
   }
+
+  async getByName({ payload: name }) {
+    return await Planet.find({ name: name });
+  }
 }
 
 module.exports = new PlanetService();

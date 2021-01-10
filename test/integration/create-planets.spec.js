@@ -16,7 +16,7 @@ describe("POST /api/v1/planets", () => {
     endpoint = "/planets";
     let planet = new PlanetSchema({
       name: "Bespin",
-      climate: "Geladdo",
+      climate: "Gelado",
       terrain: "Nevasca",
     });
     await planet.save();
@@ -25,7 +25,7 @@ describe("POST /api/v1/planets", () => {
   it("should return 201 when planet is successfully created", async () => {
     const response = await request(app).post(endpoint).send({
       name: "Bespin",
-      climate: "Geladdo",
+      climate: "Gelado",
       terrain: "Nevasca",
     });
     expect(response.status).toBe(201);

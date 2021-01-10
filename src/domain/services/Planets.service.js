@@ -21,6 +21,10 @@ class PlanetService {
   async getById({ payload }) {
     return await PlanetsRepository.getById({ payload });
   }
+
+  async getByName({ payload }) {
+    return await PlanetsRepository.getByName({ payload });
+  }
 }
 
 module.exports = new PlanetService();
