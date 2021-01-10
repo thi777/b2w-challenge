@@ -13,6 +13,12 @@ class PlanetController {
 
     return res.status(201).json(results);
   }
+
+  async list(req, res) {
+    const results = await PlanetsService.list();
+
+    return res.status(200).json(results);
+  }
 }
 
 module.exports = new PlanetController();

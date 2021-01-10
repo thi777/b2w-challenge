@@ -13,6 +13,10 @@ class PlanetService {
 
     return await PlanetsRepository.store({ payload });
   }
+
+  async list() {
+    return await PlanetsRepository.list();
+  }
 }
 
 module.exports = new PlanetService();

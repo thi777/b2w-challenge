@@ -11,7 +11,7 @@ afterAll(async () => {
   await conn.close();
 });
 
-describe("POST /api/v1/example", () => {
+describe("POST /api/v1/planets", () => {
   beforeAll(async () => {
     endpoint = "/planets";
     let planet = new PlanetSchema({
