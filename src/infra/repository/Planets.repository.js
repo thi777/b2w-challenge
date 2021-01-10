@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Planet = require("../../model/Planets");
 
 class PlanetService {
@@ -7,6 +8,10 @@ class PlanetService {
 
   async list() {
     return await Planet.find();
+  }
+
+  async getById({ payload: id }) {
+    return await Planet.findById({ _id: mongoose.Types.ObjectId(id) });
   }
 }
 

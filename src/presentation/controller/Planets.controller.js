@@ -19,6 +19,13 @@ class PlanetController {
 
     return res.status(200).json(results);
   }
+
+  async getById(req, res) {
+    const { id } = req.params;
+    const results = await PlanetsService.getById({ payload: id });
+
+    return res.status(200).json(results);
+  }
 }
 
 module.exports = new PlanetController();
