@@ -22,6 +22,7 @@ class PlanetController {
 
   async list({ query }, res) {
     const { page = 1 } = query;
+
     try {
       const results = await PlanetsService.list({ page });
 
