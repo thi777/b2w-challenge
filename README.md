@@ -1,11 +1,11 @@
-# b2w-challenge
+## b2w-challenge
 
-## Clean architecture.
+### Clean architecture.
 
 Seguindo alguns principios do clean architecture, temos um repository que se conecta com o banco, o service que orquestra a comunicação entre o repository, 
 os helpers e a controller que por sua vez faz a interação com os clients.
 
-## Testes automatizados.
+### Testes automatizados.
 
 Para rodar os testes, bastar executar o comando abaixo:
 
@@ -13,7 +13,7 @@ Para rodar os testes, bastar executar o comando abaixo:
 
 Obs. Temos um banco de dados dedicado para testes.
 
-## Como rodar a aplicação?
+### Como rodar a aplicação?
 
 #### Docker container
 
@@ -28,7 +28,7 @@ ficar parando o container e subindo ele novamente a cada mudança que você fize
 #### .env.example
 Copie o arquivo .env.example, cole na raiz do projeto e renomeie para .env (com isso teremos todas as variaveis de ambiente setadas na aplicação).
 
-# Curls para testes
+## Curls para testes
 
 ### Cria planeta
 
