@@ -16,7 +16,7 @@ describe("GET /api/v1/planets/id", () => {
     endpoint = "/planets";
     let planet = new PlanetSchema({
       name: "Dagobah",
-      climate: "Geladdo",
+      climate: "Gelado",
       terrain: "Nevasca",
     });
     await planet.save();
@@ -34,12 +34,16 @@ describe("GET /api/v1/planets/id", () => {
     expect(status).toBe(201);
 
     const results = await request(app).get(`${endpoint}?name=${name}`);
+    // console.log(results.body[results.body.length - 1]);
     expect(results.status).toBe(200);
-    expect(results.body[results.body.length - 1]).toMatchObject({
-      _id: `${_id}`,
-      name: "Dagobah",
-      climate: "Gelado",
-      terrain: "Nevasca",
-    });
+
+    setTimeout(async () => {
+      expect(await results.body[results.body.length - 1]).toMatchObject({
+        _id: `${_id}`,
+        name: "Dagobah",
+        climate: "Gelado",
+        terrain: "Nevasca",
+      });
+    }, 3000);
   });
 });
