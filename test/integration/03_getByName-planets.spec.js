@@ -37,8 +37,8 @@ describe("GET /api/v1/planets/id", () => {
     // console.log(results.body[results.body.length - 1]);
     expect(results.status).toBe(200);
 
-    setTimeout(async () => {
-      expect(await results.body[results.body.length - 1]).toMatchObject({
+    setTimeout(() => {
+      expect(results.body[results.body.length - 1]).toMatchObject({
         _id: `${_id}`,
         name: "Dagobah",
         climate: "Gelado",

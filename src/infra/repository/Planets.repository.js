@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 const Planet = require("../../model/Planets");
 
-class PlanetService {
+class PlanetRepository {
   async store({ payload }) {
     return await Planet.create(payload);
   }
 
-  async list() {
-    return await Planet.find();
+  async list({ page }) {
+    return await Planet.find({})
+      .skip((parseInt(page) - 1) * 20)
+      .limit(20);
   }
 
   async getById({ payload: id }) {
@@ -23,4 +25,4 @@ class PlanetService {
   }
 }
 
-module.exports = new PlanetService();
+module.exports = new PlanetRepository();

@@ -1,6 +1,7 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const PlanetSchema = new Schema(
+const PlanetSchema = Schema(
   {
     name: String,
     climate: String,
@@ -13,4 +14,4 @@ const PlanetSchema = new Schema(
   }
 );
 
-module.exports = model("Planets", PlanetSchema);
+module.exports = mongoose.model("Planets", PlanetSchema);
