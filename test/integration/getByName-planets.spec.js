@@ -43,6 +43,8 @@ describe("GET /api/v1/planets/id", () => {
         name: "Dagobah",
         climate: "Gelado",
         terrain: "Nevasca",
+        population: "unknown",
+        films: 3,
       });
     }, 3000);
   });

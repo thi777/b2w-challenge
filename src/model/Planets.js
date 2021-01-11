@@ -5,6 +5,8 @@ const PlanetSchema = new Schema(
     name: String,
     climate: String,
     terrain: String,
+    population: String,
+    films: Number,
   },
   {
     timestamps: true,

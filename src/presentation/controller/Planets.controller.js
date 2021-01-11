@@ -24,6 +24,13 @@ class PlanetController {
     try {
       const results = await PlanetsService.list();
 
+      if (results.empty) {
+        return res.status(200).json({
+          statusCode: 200,
+          message: `List empty`,
+        });
+      }
+
       return res.status(200).json(results);
     } catch (error) {
       return res
@@ -36,6 +43,13 @@ class PlanetController {
     try {
       const { id } = params;
       const results = await PlanetsService.getById({ payload: id });
+
+      if (results.error) {
+        return res.status(400).json({
+          statusCode: 400,
+          message: `Planet does not exist`,
+        });
+      }
 
       return res.status(200).json(results);
     } catch (error) {
@@ -50,6 +64,13 @@ class PlanetController {
       const { name } = query;
 
       const results = await PlanetsService.getByName({ payload: name });
+
+      if (results.error) {
+        return res.status(400).json({
+          statusCode: 400,
+          message: `Planet does not exist`,
+        });
+      }
 
       return res.status(200).json(results);
     } catch (error) {

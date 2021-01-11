@@ -40,6 +40,8 @@ describe("GET /api/v1/planets/id", () => {
       name: "Bespin",
       climate: "Gelado",
       terrain: "Nevasca",
+      population: "6000000",
+      films: 1,
     });
   });
 });

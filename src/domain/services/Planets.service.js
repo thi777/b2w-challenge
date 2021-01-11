@@ -1,5 +1,6 @@
 const PlanetsRepository = require("../../infra/repository/Planets.repository");
 const { isValidFields } = require("../validator/validField");
+const appearances = require("../helpers/film-appearances.helper.js");
 
 class PlanetService {
   async store({ payload }) {
@@ -11,24 +12,40 @@ class PlanetService {
 
     if (validField.error) return validField;
 
+    const { population, films } = await appearances(payload.name);
+    payload.population = population;
+    payload.films = films;
+
     return await PlanetsRepository.store({ payload });
   }
 
   async list() {
-    return await PlanetsRepository.list();
+    const results = await PlanetsRepository.list();
+
+    if (!results.length) return { empty: true };
+
+    return results;
   }
 
   async getById({ payload }) {
-    return await PlanetsRepository.getById({ payload });
+    const results = await PlanetsRepository.getById({ payload });
+
+    if (!results) return { error: true };
+
+    return results;
   }
 
   async getByName({ payload }) {
-    return await PlanetsRepository.getByName({ payload });
+    const results = await PlanetsRepository.getByName({ payload });
+
+    if (!results.length) return { error: true };
+
+    return results;
   }
 
   async delete({ payload }) {
     const results = await PlanetsRepository.delete({ payload });
-    
+
     if (!results.deletedCount) return { error: true };
 
     return results;
