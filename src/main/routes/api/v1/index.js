@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const PlanetsController = require("../presentation/controller/Planets.controller");
-const InvalidController = require("../presentation/controller/Invalid.controller");
+const InvalidController = require("../../../../presentation/controller/Invalid.controller");
+const PlanetsController = require("../../../../presentation/controller/Planets.controller");
 
 const routes = new Router();
 

@@ -13,7 +13,7 @@ afterAll(async () => {
 
 describe("GET /api/v1/planets/id", () => {
   beforeAll(async () => {
-    endpoint = "/planets";
+    endpoint = "/api/v1/planets";
     let planet = new PlanetSchema({
       name: "Dagobah",
       climate: "Gelado",

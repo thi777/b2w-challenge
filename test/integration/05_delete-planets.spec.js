@@ -13,7 +13,7 @@ afterAll(async () => {
 
 describe("DELETE /api/v1/planets", () => {
   beforeAll(async () => {
-    endpoint = "/planets";
+    endpoint = "/api/v1/planets";
     let planet = new PlanetSchema({
       name: "Bespin",
       climate: "Gelado",

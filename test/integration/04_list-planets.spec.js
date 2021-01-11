@@ -12,7 +12,7 @@ afterAll(async () => {
 
 describe("GET /api/v1/planets", () => {
   beforeAll(async () => {
-    endpoint = "/planets";
+    endpoint = "/api/v1/planets";
   });
 
   it("should return 200 when listing all planets", async () => {

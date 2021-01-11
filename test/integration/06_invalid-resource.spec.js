@@ -3,7 +3,7 @@ const app = require("../../src/main/app");
 
 describe("GET /api/v1/planets", () => {
   beforeAll(async () => {
-    endpoint = "/abacaxi";
+    endpoint = "/api/v1/abacaxi";
   });
 
   it("should return 404 when any invalid resources are sent", async () => {
