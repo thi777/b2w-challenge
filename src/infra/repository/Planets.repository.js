@@ -17,6 +17,10 @@ class PlanetService {
   async getByName({ payload: name }) {
     return await Planet.find({ name: name });
   }
+
+  async delete({ payload: id }) {
+    return await Planet.deleteOne({ _id: mongoose.Types.ObjectId(id) });
+  }
 }
 
 module.exports = new PlanetService();

@@ -25,6 +25,14 @@ class PlanetService {
   async getByName({ payload }) {
     return await PlanetsRepository.getByName({ payload });
   }
+
+  async delete({ payload }) {
+    const results = await PlanetsRepository.delete({ payload });
+    
+    if (!results.deletedCount) return { error: true };
+
+    return results;
+  }
 }
 
 module.exports = new PlanetService();
