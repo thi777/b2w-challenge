@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../../src/main/app");
 const PlanetSchema = require("../../src/model/Planets");
-const conn = require("../../src/infra/database/index");
+const conn = require("../../src/infra/database/db");
 
 beforeAll(async () => {
   await conn.connect();

@@ -6,36 +6,38 @@ class PlanetController {
       const results = await PlanetsService.store({ payload: examples });
 
       if (results.error) {
-        return res.status(400).json({
+        return res.status(400).send({
           statusCode: 400,
           message: `missing data: ${results.error}`,
         });
       }
 
-      return res.status(201).json(results);
+      return res.status(201).send(results);
     } catch (error) {
       return res
         .status(500)
-        .json({ statusCode: 500, message: "Sorry, something broke" });
+        .send({ statusCode: 500, message: "Sorry, something broke" });
     }
   }
 
-  async list(req, res) {
+  async list({ query }, res) {
+    const { page = 1 } = query;
     try {
-      const results = await PlanetsService.list();
+      const results = await PlanetsService.list({ page });
 
       if (results.empty) {
-        return res.status(200).json({
+        return res.status(200).send({
           statusCode: 200,
           message: `List empty`,
         });
       }
 
-      return res.status(200).json(results);
+      return res.status(200).send(results);
     } catch (error) {
+      console.log(error);
       return res
         .status(500)
-        .json({ statusCode: 500, message: "Sorry, something broke" });
+        .send({ statusCode: 500, message: "Sorry, something broke" });
     }
   }
 
@@ -45,17 +47,17 @@ class PlanetController {
       const results = await PlanetsService.getById({ payload: id });
 
       if (results.error) {
-        return res.status(400).json({
+        return res.status(400).send({
           statusCode: 400,
           message: `Planet does not exist`,
         });
       }
 
-      return res.status(200).json(results);
+      return res.status(200).send(results);
     } catch (error) {
       return res
         .status(500)
-        .json({ statusCode: 500, message: "Sorry, something broke" });
+        .send({ statusCode: 500, message: "Sorry, something broke" });
     }
   }
 
@@ -66,17 +68,17 @@ class PlanetController {
       const results = await PlanetsService.getByName({ payload: name });
 
       if (results.error) {
-        return res.status(400).json({
+        return res.status(400).send({
           statusCode: 400,
           message: `Planet does not exist`,
         });
       }
 
-      return res.status(200).json(results);
+      return res.status(200).send(results);
     } catch (error) {
       return res
         .status(500)
-        .json({ statusCode: 500, message: "Sorry, something broke" });
+        .send({ statusCode: 500, message: "Sorry, something broke" });
     }
   }
 
@@ -89,16 +91,16 @@ class PlanetController {
       if (results.error) {
         return res
           .status(400)
-          .json({ statusCode: 400, message: "planet does not exist" });
+          .send({ statusCode: 400, message: "planet does not exist" });
       }
 
       return res
         .status(200)
-        .json({ statusCode: 200, message: "Deleted sucessfully" });
+        .send({ statusCode: 200, message: "Deleted sucessfully" });
     } catch (error) {
       return res
         .status(500)
-        .json({ statusCode: 500, message: "Sorry, something broke" });
+        .send({ statusCode: 500, message: "Sorry, something broke" });
     }
   }
 }

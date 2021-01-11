@@ -19,8 +19,8 @@ class PlanetService {
     return await PlanetsRepository.store({ payload });
   }
 
-  async list() {
-    const results = await PlanetsRepository.list();
+  async list({ page }) {
+    const results = await PlanetsRepository.list({ page });
 
     if (!results.length) return { empty: true };
 

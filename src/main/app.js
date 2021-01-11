@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
 
-require("../infra/database/index");
+require("../infra/database/db");
 
 class App {
   constructor() {
